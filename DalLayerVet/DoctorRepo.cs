@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DalLayerVet
 {
-    public class DoctorRepo
+    public class DoctorRepo:IDoctorRepo
     {
         VetDbContext db = new VetDbContext();
         public List<Feedback> getFeedbacks(int doctorId)
