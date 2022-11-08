@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 
@@ -26,6 +27,20 @@ namespace ApiLayerVet.Controllers
             {
                 return Ok(feedbacks);
             }
+        }
+
+        [HttpGet]
+        [EnableQuery]
+        public IQueryable<Doctor> GetDoctors()
+        {
+            return dataProcessor.GetDoctors().AsQueryable();
+        }
+
+        [HttpGet]
+        [Route("api/async/Doctors")]
+        public async Task<IQueryable<Doctor>> GetDoctorsAsync()
+        {
+            return (IQueryable<Doctor>)await dataProcessor.GetDoctorsAsync();
         }
     }
 }
