@@ -44,5 +44,15 @@
     <Compile Include="DoctorDataProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DalLayerVet\DalLayerVet.csproj">
+      <Project>{CFDD16F5-0F67-442A-B677-9E87F4C97FAD}</Project>
+      <Name>DalLayerVet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{B7931D60-66ED-4914-B753-EC259CF801F9}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

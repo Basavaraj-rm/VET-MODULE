@@ -315,9 +315,9 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DalLayerVet\DalLayerVet.csproj">
-      <Project>{CFDD16F5-0F67-442A-B677-9E87F4C97FAD}</Project>
-      <Name>DalLayerVet</Name>
+    <ProjectReference Include="..\BussinessLayerVet\BussinessLayerVet.csproj">
+      <Project>{81E3318D-DABE-481F-A5FA-5B651FDB0637}</Project>
+      <Name>BussinessLayerVet</Name>
     </ProjectReference>
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{B7931D60-66ED-4914-B753-EC259CF801F9}</Project>
