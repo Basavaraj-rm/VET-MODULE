@@ -16,5 +16,10 @@ namespace BussinessLayerVet
             List<Feedback> feedbacks= repo.getFeedbacks(doctorId);
             return feedbacks;
         }
+        public bool postFeedback(int doctorId,Feedback feedback)
+        {
+            bool done = repo.postFeedback(doctorId, feedback);
+            return done;
+        }
     }
 }

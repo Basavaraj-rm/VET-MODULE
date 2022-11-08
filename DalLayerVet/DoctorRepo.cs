@@ -22,6 +22,20 @@ namespace DalLayerVet
                 return data.feedbacks; 
             }
         }
+        public bool postFeedback(int doctorId,Feedback feedback)
+        {
+            var data = db.Doctors.Find(doctorId);
+            if(data==null)
+            {
+                return false;
+            }
+            else
+            {
+                data.feedbacks.Add(feedback);
+                db.SaveChanges();
+                return true;
+            }
+        }
 
     }
 }

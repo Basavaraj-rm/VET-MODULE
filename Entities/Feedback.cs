@@ -10,7 +10,6 @@ namespace Entities
     public class Feedback
     {
         [Key]
-        [Required]
         public int feedbackId { get; set; }
         [Required]
         public int doctorCompetence { get; set; }
