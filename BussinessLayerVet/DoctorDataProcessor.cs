@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BussinessLayerVet
 {
-    public class Class1
+    public class DoctorDataProcessor
     {
     }
 }
