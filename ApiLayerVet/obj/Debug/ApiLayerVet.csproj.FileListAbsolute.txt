@@ -129,3 +129,5 @@ C:\Users\Admin\Desktop\VET-MODULE\ApiLayerVet\obj\Debug\ApiLayerVet.csproj.CoreC
 C:\Users\Admin\Desktop\VET-MODULE\ApiLayerVet\obj\Debug\ApiLayerVet.csproj.CopyComplete
 C:\Users\Admin\Desktop\VET-MODULE\ApiLayerVet\obj\Debug\ApiLayerVet.dll
 C:\Users\Admin\Desktop\VET-MODULE\ApiLayerVet\obj\Debug\ApiLayerVet.pdb
+C:\Users\Admin\Desktop\VET-MODULE\ApiLayerVet\bin\BussinessLayerVet.dll
+C:\Users\Admin\Desktop\VET-MODULE\ApiLayerVet\bin\BussinessLayerVet.pdb
