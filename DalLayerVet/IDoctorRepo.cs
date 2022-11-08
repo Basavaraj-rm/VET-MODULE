@@ -10,5 +10,9 @@ namespace DalLayerVet
     public interface IDoctorRepo
     {
         List<Feedback> getFeedbacks(int doctorId);
+
+        List<Doctor> GetDoctors();
+
+        Task<List<Doctor>> GetDoctorsAsync();
     }
 }

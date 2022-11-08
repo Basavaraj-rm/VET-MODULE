@@ -16,5 +16,17 @@ namespace BussinessLayerVet
             List<Feedback> feedbacks= repo.getFeedbacks(doctorId);
             return feedbacks;
         }
+
+        
+
+        public List<Doctor> GetDoctors()
+        {
+            return repo.GetDoctors();
+        }
+
+        public async Task<List<Doctor>> GetDoctorsAsync()
+        {
+            return await repo.GetDoctorsAsync();
+        }
     }
 }

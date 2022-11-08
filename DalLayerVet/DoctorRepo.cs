@@ -1,6 +1,7 @@
 ﻿using Entities;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,16 @@ namespace DalLayerVet
             {
                 return data.feedbacks; 
             }
+        }
+
+        public List<Doctor> GetDoctors()
+        {
+            return db.Doctors.ToList();
+        }
+
+        public async Task<List<Doctor>> GetDoctorsAsync()
+        {
+            return await db.Doctors.ToListAsync();
         }
     }
 }
