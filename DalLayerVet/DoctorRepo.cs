@@ -10,6 +10,14 @@ namespace DalLayerVet
     public class DoctorRepo:IDoctorRepo
     {
         VetDbContext db = new VetDbContext();
+
+        public void addDoctor(Doctor doctor)
+        {
+            db.Doctors.Add(doctor);
+            db.SaveChanges();
+
+        }
+
         public List<Feedback> getFeedbacks(int doctorId)
         {
             var data = db.Doctors.Find(doctorId);

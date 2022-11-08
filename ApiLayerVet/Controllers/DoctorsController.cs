@@ -27,5 +27,16 @@ namespace ApiLayerVet.Controllers
                 return Ok(feedbacks);
             }
         }
+
+
+        public IHttpActionResult PostDoctor(Doctor d)
+        {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            dataProcessor.addDoctor(d);
+            return Ok();
+        }
     }
 }
