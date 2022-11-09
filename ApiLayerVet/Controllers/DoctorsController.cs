@@ -16,7 +16,13 @@ namespace ApiLayerVet.Controllers
     public class DoctorsController : ApiController
     {
         
-        DoctorDataProcessor dataProcessor = new DoctorDataProcessor();
+        IDoctorDataProcessor dataProcessor = null;
+        public DoctorsController(IDoctorDataProcessor dataProcessor)
+        {
+            this.dataProcessor = dataProcessor;
+        }
+
+
         [HttpGet]
         [Route("api/Doctor/{doctorId}/Feedback/{appointmentId}")]
         public IHttpActionResult GET_FEEDBACK(int doctorId,int appointmentId)

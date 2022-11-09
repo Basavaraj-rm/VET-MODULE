@@ -16,3 +16,5 @@ C:\Users\Admin\Desktop\VET-MODULE\BussinessLayerVet\bin\Debug\Exceptions.dll
 C:\Users\Admin\Desktop\VET-MODULE\BussinessLayerVet\bin\Debug\Exceptions.pdb
 C:\Users\Admin\Desktop\VET-MODULE\BussinessLayerVet\bin\Debug\DTOs.dll
 C:\Users\Admin\Desktop\VET-MODULE\BussinessLayerVet\bin\Debug\DTOs.pdb
+C:\Users\Admin\Desktop\VET-MODULE\BussinessLayerVet\bin\Debug\AutoMapper.dll
+C:\Users\Admin\Desktop\VET-MODULE\BussinessLayerVet\bin\Debug\AutoMapper.xml

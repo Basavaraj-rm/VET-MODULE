@@ -9,9 +9,14 @@ using System.Threading.Tasks;
 
 namespace BussinessLayerVet
 {
-    public class DoctorDataProcessor
+    public class DoctorDataProcessor : IDoctorDataProcessor
     {
-        DoctorRepo repo = new DoctorRepo();
+        IDoctorRepo repo = null;
+        public DoctorDataProcessor(IDoctorRepo repo)
+        {
+            this.repo = repo;
+        }
+    
         public List<Feedback> getFeedbacks(int doctorId)
         {
             try
@@ -94,16 +99,9 @@ namespace BussinessLayerVet
         }
         public Doctor AddDoctor(DoctorDto dto)
         {
-            Doctor doctor = new Doctor();
-            doctor.imgUrl = dto.imgUrl;
-            doctor.name = dto.name;
-            doctor.npiNo = dto.npiNo;
-            doctor.mobileNo = dto.mobileNo;
-            doctor.email = dto.email;
-            doctor.speciality = dto.speciality;
-            doctor.clinicAddress = dto.clinicAddress;
-            doctor.appointmentIds = new List<DoctorAppointment>();
+            Doctor doctor = AutoMapper.MapperConfig(dto);
             doctor.feedbacks = new List<Feedback>();
+            doctor.appointmentIds = new List<DoctorAppointment>();
 
             Doctor savedDoctor = repo.SaveDoctor(doctor);
             return savedDoctor;
@@ -111,16 +109,9 @@ namespace BussinessLayerVet
 
         public async Task<Doctor> AddDoctorAsync(DoctorDto dto)
         {
-            Doctor doctor = new Doctor();
-            doctor.imgUrl = dto.imgUrl;
-            doctor.name = dto.name;
-            doctor.npiNo = dto.npiNo;
-            doctor.mobileNo = dto.mobileNo;
-            doctor.email = dto.email;
-            doctor.speciality = dto.speciality;
-            doctor.clinicAddress = dto.clinicAddress;
-            doctor.appointmentIds = new List<DoctorAppointment>();
+            Doctor doctor = AutoMapper.MapperConfig(dto);
             doctor.feedbacks = new List<Feedback>();
+            doctor.appointmentIds = new List<DoctorAppointment>();
 
             await repo.SaveDoctorAsync(doctor);
             return doctor;
