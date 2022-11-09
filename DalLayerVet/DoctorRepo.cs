@@ -22,6 +22,18 @@ namespace DalLayerVet
                 return data.feedbacks; 
             }
         }
+        public async Task<List<Feedback>> getFeedbacksAsync(int doctorId)
+        {
+            var data = await db.Doctors.FindAsync(doctorId);
+            if (data == null)
+            {
+                return null;
+            }
+            else
+            {
+                return data.feedbacks;
+            }
+        }
         public bool postFeedback(int doctorId,Feedback feedback)
         {
             var data = db.Doctors.Find(doctorId);
@@ -33,6 +45,20 @@ namespace DalLayerVet
             {
                 data.feedbacks.Add(feedback);
                 db.SaveChanges();
+                return true;
+            }
+        }
+        public async Task<bool> postFeedbackAsync(int doctorId, Feedback feedback)
+        {
+            var data = await db.Doctors.FindAsync(doctorId);
+            if (data == null)
+            {
+                return false;
+            }
+            else
+            {
+                data.feedbacks.Add(feedback);
+                await db.SaveChangesAsync();
                 return true;
             }
         }
