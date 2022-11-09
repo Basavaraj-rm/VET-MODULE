@@ -12,3 +12,17 @@ C:\Users\Admin\Desktop\VET-MODULE\DalLayerVet\obj\Debug\DalLayerVet.csproj.CoreC
 C:\Users\Admin\Desktop\VET-MODULE\DalLayerVet\obj\Debug\DalLayerVet.csproj.CopyComplete
 C:\Users\Admin\Desktop\VET-MODULE\DalLayerVet\obj\Debug\DalLayerVet.dll
 C:\Users\Admin\Desktop\VET-MODULE\DalLayerVet\obj\Debug\DalLayerVet.pdb
+C:\Users\Admin\Desktop\FinalProject\VET-MODULE\DalLayerVet\bin\Debug\DalLayerVet.dll.config
+C:\Users\Admin\Desktop\FinalProject\VET-MODULE\DalLayerVet\bin\Debug\DalLayerVet.dll
+C:\Users\Admin\Desktop\FinalProject\VET-MODULE\DalLayerVet\bin\Debug\DalLayerVet.pdb
+C:\Users\Admin\Desktop\FinalProject\VET-MODULE\DalLayerVet\bin\Debug\Entities.dll
+C:\Users\Admin\Desktop\FinalProject\VET-MODULE\DalLayerVet\bin\Debug\EntityFramework.dll
+C:\Users\Admin\Desktop\FinalProject\VET-MODULE\DalLayerVet\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Admin\Desktop\FinalProject\VET-MODULE\DalLayerVet\bin\Debug\Entities.pdb
+C:\Users\Admin\Desktop\FinalProject\VET-MODULE\DalLayerVet\bin\Debug\EntityFramework.xml
+C:\Users\Admin\Desktop\FinalProject\VET-MODULE\DalLayerVet\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Admin\Desktop\FinalProject\VET-MODULE\DalLayerVet\obj\Debug\DalLayerVet.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\FinalProject\VET-MODULE\DalLayerVet\obj\Debug\DalLayerVet.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\FinalProject\VET-MODULE\DalLayerVet\obj\Debug\DalLayerVet.csproj.CopyComplete
+C:\Users\Admin\Desktop\FinalProject\VET-MODULE\DalLayerVet\obj\Debug\DalLayerVet.dll
+C:\Users\Admin\Desktop\FinalProject\VET-MODULE\DalLayerVet\obj\Debug\DalLayerVet.pdb

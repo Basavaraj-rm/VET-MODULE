@@ -1,12 +1,11 @@
 ﻿using BussinessLayerVet;
 using Entities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.OData;
 
 namespace ApiLayerVet.Controllers
 {
@@ -26,6 +25,23 @@ namespace ApiLayerVet.Controllers
             {
                 return Ok(feedbacks);
             }
+        }
+
+        [HttpGet]
+        [EnableQuery]
+        public IQueryable<Doctor> GetDoctors()
+        {
+            return dataProcessor.GetDoctors().AsQueryable();
+        }
+
+        [HttpGet]
+        [Route("api/async/Doctors")]
+        [EnableQuery]
+        public async Task<IQueryable<Doctor>> GetDoctorsAsync()
+        {
+            var docts =  await dataProcessor.GetDoctorsAsync();
+            
+            return docts.AsQueryable();
         }
     }
 }
