@@ -11,10 +11,42 @@ namespace DalLayerVet
     {
         VetDbContext db = new VetDbContext();
 
-        public void EditDoctor(Doctor doctor)
+        public bool EditDoctor(Doctor doctor,int id)
         {
-            db.Entry(doctor).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
+            var data = db.Doctors.Find(id);
+            if (data == null)
+                return false;
+            else
+            {
+                data.name = doctor.name;
+                data.mobileNo = doctor.mobileNo;
+                data.email = doctor.email;
+                data.clinicAddress = doctor.clinicAddress;
+                data.imgUrl = doctor.imgUrl;
+                data.speciality = doctor.speciality;
+                data.npiNo = doctor.npiNo;
+                db.SaveChanges();
+                return true;
+            }
+        }
+
+        public async Task<bool> EditDoctorasync(Doctor doctor,int id)
+        {
+            var data = await db.Doctors.FindAsync(id);
+            if(data== null) return false;
+            else
+            {
+                data.name = doctor.name;
+                data.mobileNo = doctor.mobileNo;
+                data.email = doctor.email;
+                data.clinicAddress=doctor.clinicAddress;
+                data.imgUrl = doctor.imgUrl;
+                data.speciality = doctor.speciality;
+                data.npiNo = doctor.npiNo;
+                await db.SaveChangesAsync();
+                return true;
+            }
+            
         }
 
         public List<Feedback> getFeedbacks(int doctorId)

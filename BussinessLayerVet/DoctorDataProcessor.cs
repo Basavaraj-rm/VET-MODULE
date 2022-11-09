@@ -16,9 +16,13 @@ namespace BussinessLayerVet
             List<Feedback> feedbacks= repo.getFeedbacks(doctorId);
             return feedbacks;
         }
-        public void editDoctor(Doctor d)
+        public bool editDoctor(Doctor d,int id)
         {
-            repo.EditDoctor(d);
+            return(repo.EditDoctor(d,id));
+        }
+        public async Task<bool> editDoctorAsync(Doctor d,int id)
+        {
+            return(await repo.EditDoctorasync(d,id));
         }
     }
 }

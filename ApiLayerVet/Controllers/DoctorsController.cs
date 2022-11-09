@@ -5,8 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.Mvc;
+using HttpGetAttribute = System.Web.Http.HttpGetAttribute;
+using RouteAttribute = System.Web.Http.RouteAttribute;
 
 namespace ApiLayerVet.Controllers
 {
@@ -28,11 +32,26 @@ namespace ApiLayerVet.Controllers
             }
         }
 
-
-        public IHttpActionResult PutDoctor(Doctor d)
+       
+        [Route("api/Doctor/{id}")]
+        public IHttpActionResult PutDoctor(Doctor d,int id)
         {
-            dataProcessor.editDoctor(d);
+            if (!ModelState.IsValid)
+                return BadRequest();
+            if (!dataProcessor.editDoctor(d,id))
+                return BadRequest("Doctor ID Invalid");
             return Ok();
+        }
+        [Route("api/Doctor/Async/{id}")]
+        public async Task<IHttpActionResult> PutDoctorAsync(Doctor d,int id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+            bool x = await dataProcessor.editDoctorAsync(d,id);
+            if (!x)
+                return BadRequest("Doctor Id Invalid");
+            else
+                return Ok();
         }
     }
 }
