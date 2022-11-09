@@ -28,6 +28,7 @@ namespace ApiLayerVet.Controllers
         }
 
         [HttpGet]
+        [Route("api/Doctors")]
         [EnableQuery]
         public IQueryable<Doctor> GetDoctors()
         {
@@ -35,13 +36,13 @@ namespace ApiLayerVet.Controllers
         }
 
         [HttpGet]
-        [Route("api/async/Doctors")]
+        [Route("api/Doctors/async")]
         [EnableQuery]
         public async Task<IQueryable<Doctor>> GetDoctorsAsync()
         {
-            var docts =  await dataProcessor.GetDoctorsAsync();
+            var data =  await dataProcessor.GetDoctorsAsync();
             
-            return docts.AsQueryable();
+            return data.AsQueryable();
         }
     }
 }

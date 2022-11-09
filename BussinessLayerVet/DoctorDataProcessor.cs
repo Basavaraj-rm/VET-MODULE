@@ -24,15 +24,8 @@ namespace BussinessLayerVet
 
         public async Task<List<Doctor>> GetDoctorsAsync()
         {
-            try
-            {
-                return await repo.GetDoctorsAsync();
-
-            }catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return null;
-            }
+           
+                return await repo.GetDoctorsAsync();     
         }
     }
 }
