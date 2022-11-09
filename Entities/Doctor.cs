@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Entities
 {
@@ -16,6 +12,7 @@ namespace Entities
         public string name { get; set; }
         [Required]
         public long npiNo { get; set; }
+        [Required]
         public string mobileNo { get; set; }
         public string email { get; set; }
         [Required]

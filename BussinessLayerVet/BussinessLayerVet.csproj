@@ -42,12 +42,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DoctorDataProcessor.cs" />
+    <Compile Include="DoctorDetailsNotCompleteException.cs" />
+    <Compile Include="IDoctorDataProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DalLayerVet\DalLayerVet.csproj">
       <Project>{CFDD16F5-0F67-442A-B677-9E87F4C97FAD}</Project>
       <Name>DalLayerVet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTOs\DTOs.csproj">
+      <Project>{9E6C3F73-5B1F-46A0-A7B7-04008BA4F1A3}</Project>
+      <Name>DTOs</Name>
     </ProjectReference>
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{B7931D60-66ED-4914-B753-EC259CF801F9}</Project>

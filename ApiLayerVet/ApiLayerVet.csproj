@@ -331,6 +331,10 @@
       <Project>{81E3318D-DABE-481F-A5FA-5B651FDB0637}</Project>
       <Name>BussinessLayerVet</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DTOs\DTOs.csproj">
+      <Project>{9E6C3F73-5B1F-46A0-A7B7-04008BA4F1A3}</Project>
+      <Name>DTOs</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{B7931D60-66ED-4914-B753-EC259CF801F9}</Project>
       <Name>Entities</Name>
