@@ -301,3 +301,5 @@ C:\Users\Admin\Desktop\finalproj\VET-MODULE\ApiLayerVet\obj\Debug\ApiLayerVet.dl
 C:\Users\Admin\Desktop\finalproj\VET-MODULE\ApiLayerVet\obj\Debug\ApiLayerVet.pdb
 C:\Users\Admin\Desktop\finalproj\VET-MODULE\ApiLayerVet\bin\DTOs.dll
 C:\Users\Admin\Desktop\finalproj\VET-MODULE\ApiLayerVet\bin\DTOs.pdb
+C:\Users\Admin\Desktop\finalproj\VET-MODULE\ApiLayerVet\bin\AutoMapper.dll
+C:\Users\Admin\Desktop\finalproj\VET-MODULE\ApiLayerVet\bin\AutoMapper.xml

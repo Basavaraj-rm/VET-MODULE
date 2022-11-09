@@ -17,7 +17,11 @@ namespace BussinessLayerVet
 
         public Doctor AddDoctor(DoctorDto dto)
         {
-            Doctor doctor = new Doctor();
+            Doctor doctor = AutoMapper.MapperConfig(dto);
+            doctor.feedbacks = new List<Feedback>();
+            doctor.appointmentIds = new List<DoctorAppointment>();
+
+            /*Doctor doctor = new Doctor();
             doctor.imgUrl = dto.imgUrl;
             doctor.name = dto.name;
             doctor.npiNo = dto.npiNo;
@@ -26,7 +30,7 @@ namespace BussinessLayerVet
             doctor.speciality = dto.speciality;
             doctor.clinicAddress = dto.clinicAddress;
             doctor.appointmentIds = new List<DoctorAppointment>();
-            doctor.feedbacks = new List<Feedback>();
+            doctor.feedbacks = new List<Feedback>();*/
 
             Doctor savedDoctor = repo.SaveDoctor(doctor);
             return savedDoctor;
@@ -34,7 +38,7 @@ namespace BussinessLayerVet
 
         public async Task<Doctor> AddDoctorAsync(DoctorDto dto)
         {
-            Doctor doctor = new Doctor();
+            /*Doctor doctor = new Doctor();
             doctor.imgUrl = dto.imgUrl;
             doctor.name = dto.name;
             doctor.npiNo = dto.npiNo;
@@ -43,7 +47,10 @@ namespace BussinessLayerVet
             doctor.speciality = dto.speciality;
             doctor.clinicAddress = dto.clinicAddress;
             doctor.appointmentIds = new List<DoctorAppointment>();
+            doctor.feedbacks = new List<Feedback>();*/
+            Doctor doctor = AutoMapper.MapperConfig(dto);
             doctor.feedbacks = new List<Feedback>();
+            doctor.appointmentIds = new List<DoctorAppointment>();
 
             await repo.SaveDoctorAsync(doctor);
             return doctor;

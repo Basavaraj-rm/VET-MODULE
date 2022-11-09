@@ -28,3 +28,5 @@ C:\Users\Admin\Desktop\finalproj\VET-MODULE\BussinessLayerVet\obj\Debug\Bussines
 C:\Users\Admin\Desktop\finalproj\VET-MODULE\BussinessLayerVet\obj\Debug\BussinessLayerVet.pdb
 C:\Users\Admin\Desktop\finalproj\VET-MODULE\BussinessLayerVet\bin\Debug\DTOs.dll
 C:\Users\Admin\Desktop\finalproj\VET-MODULE\BussinessLayerVet\bin\Debug\DTOs.pdb
+C:\Users\Admin\Desktop\finalproj\VET-MODULE\BussinessLayerVet\bin\Debug\AutoMapper.dll
+C:\Users\Admin\Desktop\finalproj\VET-MODULE\BussinessLayerVet\bin\Debug\AutoMapper.xml
