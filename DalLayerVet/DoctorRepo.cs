@@ -35,17 +35,17 @@ namespace DalLayerVet
                 return false;
 
         }
-      public async Task<bool> _AddAppointment(int doctorId, DoctorAppointment appointmentId)
+      public async Task<bool> AddAppointmentAsync(int doctorId, DoctorAppointment appointmentId)
         {
             if (db.Doctors.Find(doctorId) != null)
             {
                 Doctor d = db.Doctors.Find(doctorId);
                 d.appointmentIds.Add(appointmentId);
-                db.SaveChanges();
-                return await Task.FromResult(true);
+                await db.SaveChangesAsync();
+                return true;
             }
             else
-                return await Task.FromResult(false);
+                return false;
         }
     }
 }

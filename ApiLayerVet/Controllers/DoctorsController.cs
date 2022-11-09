@@ -30,7 +30,7 @@ namespace ApiLayerVet.Controllers
         }
 
         [HttpPost]
-        [Route("api/Doctors/AssignAppointmentToDoctor/doctorId={doctorId}")]
+        [Route("api/Doctors/AssignAppointmentToDoctor/{doctorId}")]
         public IHttpActionResult Post(int doctorId, DoctorAppointment appointmentId)
         {
             bool response = dataProcessor.AddAppointment(doctorId, appointmentId);
@@ -41,10 +41,10 @@ namespace ApiLayerVet.Controllers
         }
 
         [HttpPost]
-        [Route("api/Doctors/AssignAppointmentToDoctor/async/doctorId={doctorId}")]
+        [Route("api/Doctors/AssignAppointmentToDoctor/async/{doctorId}")]
         public async Task<IHttpActionResult> PostAppointment(int doctorId, DoctorAppointment appointmentId)
         {
-            var response = await dataProcessor._AddAppointment(doctorId, appointmentId);
+            var response = await dataProcessor.AddAppointmentAsync(doctorId, appointmentId);
             if (response==true)
                 return Ok(); //200
             else

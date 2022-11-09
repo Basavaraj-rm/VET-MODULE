@@ -21,9 +21,9 @@ namespace BussinessLayerVet
             bool response = repo.AddAppointment(doctorId, appointmentId);
             return response;
         }
-        public async Task<bool> _AddAppointment(int doctorId,DoctorAppointment appointmentId)
+        public async Task<bool> AddAppointmentAsync(int doctorId,DoctorAppointment appointmentId)
         {
-            var response =  await repo._AddAppointment(doctorId, appointmentId);
+            var response =  await repo.AddAppointmentAsync(doctorId, appointmentId);
             return response;
         }
     }
