@@ -24,7 +24,6 @@ namespace DalLayerVet
         {
             db.Doctors.Add(doctor);
             db.SaveChanges();
-
             return doctor;
         }
 

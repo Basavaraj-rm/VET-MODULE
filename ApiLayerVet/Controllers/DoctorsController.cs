@@ -31,8 +31,6 @@ namespace ApiLayerVet.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             Doctor doctor = dataProcessor.AddDoctor(doctorDto);
-            if (doctor == null)
-                throw new Exception("Couldn't able to add this doctor");
             return Created($"api/doctors/{doctor.doctorId}", doctor);
 
         }
@@ -43,8 +41,6 @@ namespace ApiLayerVet.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             Doctor doctor = await dataProcessor.AddDoctorAsync(doctorDto);
-            if (doctor == null)
-                throw new Exception("Couldn't able to add this doctor");
             return Created($"api/doctors/async/{doctor.doctorId}", doctor);
 
         }

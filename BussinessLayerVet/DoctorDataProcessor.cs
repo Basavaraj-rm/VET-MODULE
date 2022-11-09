@@ -17,19 +17,6 @@ namespace BussinessLayerVet
 
         public Doctor AddDoctor(DoctorDto dto)
         {
-             if (dto.name == null)
-                 throw new DoctorDetailsNotCompleteException("Please enter the doctor name");
-             else if (dto.npiNo == 0)
-                 throw new DoctorDetailsNotCompleteException("NPI Number mandatory");
-             else if (dto.mobileNo == null)
-                 throw new DoctorDetailsNotCompleteException("Mobile number not found");
-             else if (dto.speciality == null)
-                 throw new DoctorDetailsNotCompleteException("Doctor's speciality not found");
-             else if (dto.clinicAddress == null)
-                 throw new DoctorDetailsNotCompleteException("Clinic Address not found");
-            
-            
-
             Doctor doctor = new Doctor();
             doctor.imgUrl = dto.imgUrl;
             doctor.name = dto.name;
@@ -47,23 +34,6 @@ namespace BussinessLayerVet
 
         public async Task<Doctor> AddDoctorAsync(DoctorDto dto)
         {
-            try
-            {
-                if (dto.name == null)
-                    throw new DoctorDetailsNotCompleteException("Please enter the doctor name");
-                else if (dto.npiNo == 0)
-                    throw new DoctorDetailsNotCompleteException("NPI Number mandatory");
-                else if (dto.mobileNo == null)
-                    throw new DoctorDetailsNotCompleteException("Mobile number not found");
-                else if (dto.speciality == null)
-                    throw new DoctorDetailsNotCompleteException("Doctor's speciality not found");
-                else if (dto.clinicAddress == null)
-                    throw new DoctorDetailsNotCompleteException("Clinic Address not found");
-            }
-            catch(DoctorDetailsNotCompleteException ex)
-            {
-                System.Console.WriteLine(ex.Message);
-            }
             Doctor doctor = new Doctor();
             doctor.imgUrl = dto.imgUrl;
             doctor.name = dto.name;
@@ -76,7 +46,6 @@ namespace BussinessLayerVet
             doctor.feedbacks = new List<Feedback>();
 
             await repo.SaveDoctorAsync(doctor);
-
             return doctor;
         }
 
