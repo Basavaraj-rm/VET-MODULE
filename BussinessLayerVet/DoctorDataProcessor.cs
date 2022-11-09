@@ -16,5 +16,15 @@ namespace BussinessLayerVet
             List<Feedback> feedbacks= repo.getFeedbacks(doctorId);
             return feedbacks;
         }
+        public bool AddAppointment(int doctorId,DoctorAppointment appointmentId)
+        {
+            bool response = repo.AddAppointment(doctorId, appointmentId);
+            return response;
+        }
+        public async Task<bool> _AddAppointment(int doctorId,DoctorAppointment appointmentId)
+        {
+            var response =  await repo._AddAppointment(doctorId, appointmentId);
+            return response;
+        }
     }
 }

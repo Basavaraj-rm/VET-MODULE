@@ -22,5 +22,30 @@ namespace DalLayerVet
                 return data.feedbacks; 
             }
         }
+        public bool AddAppointment(int doctorId, DoctorAppointment appointmentId)
+        {
+            if (db.Doctors.Find(doctorId) != null)
+            {
+                Doctor d = db.Doctors.Find(doctorId);
+                d.appointmentIds.Add(appointmentId);
+                db.SaveChanges();
+                return true;
+            }
+            else
+                return false;
+
+        }
+      public async Task<bool> _AddAppointment(int doctorId, DoctorAppointment appointmentId)
+        {
+            if (db.Doctors.Find(doctorId) != null)
+            {
+                Doctor d = db.Doctors.Find(doctorId);
+                d.appointmentIds.Add(appointmentId);
+                db.SaveChanges();
+                return await Task.FromResult(true);
+            }
+            else
+                return await Task.FromResult(false);
+        }
     }
 }

@@ -10,5 +10,7 @@ namespace DalLayerVet
     public interface IDoctorRepo
     {
         List<Feedback> getFeedbacks(int doctorId);
+        bool AddAppointment(int doctorId, DoctorAppointment appointmentId);
+        
     }
 }
