@@ -1,4 +1,5 @@
 ﻿using BussinessLayerVet;
+using DTOs;
 using Entities;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.OData;
 
 namespace ApiLayerVet.Controllers
 {
@@ -16,32 +18,66 @@ namespace ApiLayerVet.Controllers
         
         DoctorDataProcessor dataProcessor = new DoctorDataProcessor();
         [HttpGet]
-        [Route("api/Doctor/Feedbacks/{doctorId}")]
-        public IHttpActionResult GET_FEEDBACK(int doctorId)
+        [Route("api/Doctor/{doctorId}/Feedback/{appointmentId}")]
+        public IHttpActionResult GET_FEEDBACK(int doctorId,int appointmentId)
         {
-            List<Feedback> feedbacks = dataProcessor.getFeedbacks(doctorId);
-            if (feedbacks == null)
+           
+            try
             {
-                return BadRequest("not found");
+                List<Feedback> feedbacks = dataProcessor.getFeedbacks(doctorId);
+                if (feedbacks == null)
+                {
+                    return BadRequest("no feedback is found for this particular doctor id");
+                }
+                else
+                {
+                    List<Feedback> f = (from i in feedbacks where i.appointmentId == appointmentId select i).ToList();
+                    if(f.Count ==0)
+                    {
+                        return BadRequest("no feedback to this appointment");
+                    }
+                    else
+                    {
+                        return Ok(f[0]);
+                    }
+                   
+                }
             }
-            else
+            catch(Exception e)
             {
-                return Ok(feedbacks);
+                return BadRequest(e.Message);
             }
+            
         }
         [HttpGet]
-        [Route("api/Doctor/Feedbacks/async/{doctorId}")]
-        public async Task<IHttpActionResult> GET_FEEDBACK_ASYNC(int doctorId)
+        [Route("api/Doctor/{doctorId}/Feedback/async/{appointmentId}")]
+        public async Task<IHttpActionResult> GET_FEEDBACK_ASYNC(int doctorId,int appointmentId)
         {
-            List<Feedback> feedbacks = await dataProcessor.getFeedbacksAsync(doctorId);
-            if (feedbacks == null)
+            try
             {
-                return BadRequest("not found");
+                List<Feedback> feedbacks = await dataProcessor.getFeedbacksAsync(doctorId);
+                if (feedbacks == null)
+                {
+                    return BadRequest("no feedback is found for this particular doctor id");
+                }
+                else
+                {
+                    List<Feedback> f = (from i in feedbacks where i.appointmentId == appointmentId select i).ToList();
+                    if (f.Count == 0)
+                    {
+                        return BadRequest("no feedback to this appointment");
+                    }
+                    else
+                    {
+                        return Ok(f[0]);
+                    }
+                }
             }
-            else
+            catch(Exception e)
             {
-                return Ok(feedbacks);
+                return BadRequest(e.Message);
             }
+            
         }
         [HttpPost]
         [Route("api/Doctor/Feedback/{doctorId}")]
@@ -49,15 +85,23 @@ namespace ApiLayerVet.Controllers
         {
             if(ModelState.IsValid)
             {
-                bool done = dataProcessor.postFeedback(doctorId, feedback);
-                if(done==false)
+                try
                 {
-                    return BadRequest("doctor ID not present");
+                    bool done = dataProcessor.postFeedback(doctorId, feedback);
+                    if (done == false)
+                    {
+                        return BadRequest("doctor ID not present");
+                    }
+                    else
+                    {
+                        return Created($"api/Doctor/Feedback/{doctorId}", feedback);
+                    }
                 }
-                else
+                catch(Exception e)
                 {
-                    return Created($"api/Doctor/Feedback/{doctorId}", feedback);
+                    return BadRequest(e.Message);
                 }
+                
             }
             else
             {
@@ -70,20 +114,106 @@ namespace ApiLayerVet.Controllers
         {
             if (ModelState.IsValid)
             {
-                bool done = await dataProcessor.postFeedbackAsync(doctorId, feedback);
-                if (done == false)
+                try
                 {
-                    return BadRequest("doctor ID not present");
+                    bool done = await dataProcessor.postFeedbackAsync(doctorId, feedback);
+                    if (done == false)
+                    {
+                        return BadRequest("doctor ID not present");
+                    }
+                    else
+                    {
+                        return Created($"api/Doctor/Feedback/{doctorId}", feedback);
+                    }
                 }
-                else
+                catch(Exception e)
                 {
-                    return Created($"api/Doctor/Feedback/{doctorId}", feedback);
+                    return BadRequest(e.Message);
                 }
             }
             else
             {
                 return BadRequest("model state is not valid");
             }
+        }
+        [HttpPost]
+        [Route("api/Doctors/AssignAppointmentToDoctor/{doctorId}")]
+        public IHttpActionResult Post(int doctorId, DoctorAppointment appointmentId)
+        {
+            bool response = dataProcessor.AddAppointment(doctorId, appointmentId);
+            if (response)
+                return Ok(); //200
+            else
+                return BadRequest("Doctor Id not available");
+        }
+
+        [HttpPost]
+        [Route("api/Doctors/AssignAppointmentToDoctor/async/{doctorId}")]
+        public async Task<IHttpActionResult> PostAppointment(int doctorId, DoctorAppointment appointmentId)
+        {
+            var response = await dataProcessor.AddAppointmentAsync(doctorId, appointmentId);
+            if (response == true)
+                return Ok(); //200
+            else
+                return BadRequest("Doctor Id not available");
+        }
+        [HttpGet]
+        [Route("api/Doctors")]
+        [EnableQuery]
+        public IQueryable<Doctor> GetDoctors()
+        {
+            return dataProcessor.GetDoctors().AsQueryable();
+        }
+
+        [HttpGet]
+        [Route("api/Doctors/async")]
+        [EnableQuery]
+        public async Task<IQueryable<Doctor>> GetDoctorsAsync()
+        {
+            var data = await dataProcessor.GetDoctorsAsync();
+
+            return data.AsQueryable();
+        }
+        [Route("api/Doctor/{id}")]
+        public IHttpActionResult PutDoctor(Doctor d, int id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+            if (!dataProcessor.editDoctor(d, id))
+                return BadRequest("Doctor ID Invalid");
+            return Ok();
+        }
+        [Route("api/Doctor/Async/{id}")]
+        public async Task<IHttpActionResult> PutDoctorAsync(Doctor d, int id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+            bool x = await dataProcessor.editDoctorAsync(d, id);
+            if (!x)
+                return BadRequest("Doctor Id Invalid");
+            else
+                return Ok();
+        }
+        [Route("api/doctors")]
+        [HttpPost]
+        public IHttpActionResult Post(DoctorDto doctorDto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest("model state is invalid");
+            Doctor doctor = dataProcessor.AddDoctor(doctorDto);
+            return Created($"api/doctors/{doctor.doctorId}", doctor);
+
+        }
+
+        [Route("api/doctors/async")]
+        [HttpPost]
+        public async Task<IHttpActionResult> PostAsync(DoctorDto doctorDto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest("model state is invalid");
+            Doctor doctor = await dataProcessor.AddDoctorAsync(doctorDto);
+            return Created($"api/doctors/async/{doctor.doctorId}", doctor);
+
         }
     }
 }

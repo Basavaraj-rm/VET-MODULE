@@ -66,6 +66,10 @@
       <Project>{B7931D60-66ED-4914-B753-EC259CF801F9}</Project>
       <Name>Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Exceptions\Exceptions.csproj">
+      <Project>{1642657D-0E59-4753-A360-8A2AC1CCD05F}</Project>
+      <Name>Exceptions</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

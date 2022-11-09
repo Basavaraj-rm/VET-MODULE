@@ -12,3 +12,7 @@ C:\Users\Admin\Desktop\VET-MODULE\BussinessLayerVet\obj\Debug\BussinessLayerVet.
 C:\Users\Admin\Desktop\VET-MODULE\BussinessLayerVet\obj\Debug\BussinessLayerVet.csproj.CopyComplete
 C:\Users\Admin\Desktop\VET-MODULE\BussinessLayerVet\obj\Debug\BussinessLayerVet.dll
 C:\Users\Admin\Desktop\VET-MODULE\BussinessLayerVet\obj\Debug\BussinessLayerVet.pdb
+C:\Users\Admin\Desktop\VET-MODULE\BussinessLayerVet\bin\Debug\Exceptions.dll
+C:\Users\Admin\Desktop\VET-MODULE\BussinessLayerVet\bin\Debug\Exceptions.pdb
+C:\Users\Admin\Desktop\VET-MODULE\BussinessLayerVet\bin\Debug\DTOs.dll
+C:\Users\Admin\Desktop\VET-MODULE\BussinessLayerVet\bin\Debug\DTOs.pdb

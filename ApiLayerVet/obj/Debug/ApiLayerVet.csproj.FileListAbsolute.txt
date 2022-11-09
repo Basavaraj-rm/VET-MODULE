@@ -166,3 +166,8 @@ C:\Users\Admin\Desktop\VET-MODULE\ApiLayerVet\bin\ko\System.Spatial.resources.dl
 C:\Users\Admin\Desktop\VET-MODULE\ApiLayerVet\bin\ru\System.Spatial.resources.dll
 C:\Users\Admin\Desktop\VET-MODULE\ApiLayerVet\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\Admin\Desktop\VET-MODULE\ApiLayerVet\bin\zh-Hant\System.Spatial.resources.dll
+C:\Users\Admin\Desktop\VET-MODULE\ApiLayerVet\bin\Exceptions.dll
+C:\Users\Admin\Desktop\VET-MODULE\ApiLayerVet\bin\Exceptions.pdb
+C:\Users\Admin\Desktop\VET-MODULE\ApiLayerVet\bin\DTOs.dll
+C:\Users\Admin\Desktop\VET-MODULE\ApiLayerVet\bin\DTOs.pdb
+C:\Users\Admin\Desktop\VET-MODULE\ApiLayerVet\bin\Elmah.dll

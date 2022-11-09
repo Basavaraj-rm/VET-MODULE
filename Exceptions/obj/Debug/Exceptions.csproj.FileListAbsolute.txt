@@ -1,0 +1,6 @@
+C:\Users\Admin\Desktop\VET-MODULE\Exceptions\bin\Debug\Exceptions.dll
+C:\Users\Admin\Desktop\VET-MODULE\Exceptions\bin\Debug\Exceptions.pdb
+C:\Users\Admin\Desktop\VET-MODULE\Exceptions\obj\Debug\Exceptions.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\VET-MODULE\Exceptions\obj\Debug\Exceptions.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\VET-MODULE\Exceptions\obj\Debug\Exceptions.dll
+C:\Users\Admin\Desktop\VET-MODULE\Exceptions\obj\Debug\Exceptions.pdb

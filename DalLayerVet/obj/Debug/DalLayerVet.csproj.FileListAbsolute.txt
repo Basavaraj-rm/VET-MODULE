@@ -12,3 +12,5 @@ C:\Users\Admin\Desktop\VET-MODULE\DalLayerVet\obj\Debug\DalLayerVet.csproj.CoreC
 C:\Users\Admin\Desktop\VET-MODULE\DalLayerVet\obj\Debug\DalLayerVet.csproj.CopyComplete
 C:\Users\Admin\Desktop\VET-MODULE\DalLayerVet\obj\Debug\DalLayerVet.dll
 C:\Users\Admin\Desktop\VET-MODULE\DalLayerVet\obj\Debug\DalLayerVet.pdb
+C:\Users\Admin\Desktop\VET-MODULE\DalLayerVet\bin\Debug\Exceptions.dll
+C:\Users\Admin\Desktop\VET-MODULE\DalLayerVet\bin\Debug\Exceptions.pdb
