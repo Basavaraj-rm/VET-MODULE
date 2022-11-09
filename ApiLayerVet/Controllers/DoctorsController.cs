@@ -29,13 +29,9 @@ namespace ApiLayerVet.Controllers
         }
 
 
-        public IHttpActionResult PostDoctor(Doctor d)
+        public IHttpActionResult PutDoctor(Doctor d)
         {
-            if(!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
-            dataProcessor.addDoctor(d);
+            dataProcessor.editDoctor(d);
             return Ok();
         }
     }

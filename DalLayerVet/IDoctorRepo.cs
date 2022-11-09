@@ -9,8 +9,8 @@ namespace DalLayerVet
 {
     public interface IDoctorRepo
     {
-        void addDoctor(Doctor doctor);
         List<Feedback> getFeedbacks(int doctorId);
+        void EditDoctor(Doctor doctor);
 
     }
 }

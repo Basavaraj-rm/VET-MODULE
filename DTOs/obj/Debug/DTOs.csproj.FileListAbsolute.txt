@@ -1,0 +1,6 @@
+C:\Users\ADMIN\Desktop\VET-MODULE\DTOs\bin\Debug\DTOs.dll
+C:\Users\ADMIN\Desktop\VET-MODULE\DTOs\bin\Debug\DTOs.pdb
+C:\Users\ADMIN\Desktop\VET-MODULE\DTOs\obj\Debug\DTOs.csproj.AssemblyReference.cache
+C:\Users\ADMIN\Desktop\VET-MODULE\DTOs\obj\Debug\DTOs.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\Desktop\VET-MODULE\DTOs\obj\Debug\DTOs.dll
+C:\Users\ADMIN\Desktop\VET-MODULE\DTOs\obj\Debug\DTOs.pdb

@@ -16,9 +16,9 @@ namespace BussinessLayerVet
             List<Feedback> feedbacks= repo.getFeedbacks(doctorId);
             return feedbacks;
         }
-        public void addDoctor(Doctor d)
+        public void editDoctor(Doctor d)
         {
-            repo.addDoctor(d);
+            repo.EditDoctor(d);
         }
     }
 }

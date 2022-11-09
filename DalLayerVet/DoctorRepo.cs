@@ -11,11 +11,10 @@ namespace DalLayerVet
     {
         VetDbContext db = new VetDbContext();
 
-        public void addDoctor(Doctor doctor)
+        public void EditDoctor(Doctor doctor)
         {
-            db.Doctors.Add(doctor);
+            db.Entry(doctor).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
-
         }
 
         public List<Feedback> getFeedbacks(int doctorId)
