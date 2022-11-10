@@ -10,38 +10,39 @@ namespace ApiLayerVet.Controllers
 {
     public class DoctorsController : ApiController
     {
-        IDoctorDataProcessor dataProcessor = new DoctorDataProcessor();
-        [HttpGet]
-        [Route("api/Doctor/Feedback/{doctorId}")]
-        public IHttpActionResult GET_FEEDBACK(int doctorId)
+        IDoctorDataProcessor dataProcessor = null;
+
+        public DoctorsController(IDoctorDataProcessor dataProcessor)
         {
-            List<Feedback> feedbacks = dataProcessor.getFeedbacks(doctorId);
-            if (feedbacks == null)
-            {
-                return BadRequest("not found");
-            }
-            else
-            {
-                return Ok(feedbacks);
-            }
+            this.dataProcessor = dataProcessor;
         }
+
 
         public IHttpActionResult Post(DoctorDto doctorDto)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-            Doctor doctor = dataProcessor.AddDoctor(doctorDto);
-            return Created($"api/doctors/{doctor.doctorId}", doctor);
-
+            try
+            {
+                Doctor doctor = dataProcessor.AddDoctor(doctorDto);
+                return Created($"api/doctors/{doctor.doctorId}", doctor);
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [Route("api/doctors/async")]
         public async Task<IHttpActionResult> PostAsync(DoctorDto doctorDto)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-            Doctor doctor = await dataProcessor.AddDoctorAsync(doctorDto);
-            return Created($"api/doctors/async/{doctor.doctorId}", doctor);
+            try
+            {
+                Doctor doctor = await dataProcessor.AddDoctorAsync(doctorDto);
+                return Created($"api/doctors/async/{doctor.doctorId}", doctor);
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
 
         }
     }

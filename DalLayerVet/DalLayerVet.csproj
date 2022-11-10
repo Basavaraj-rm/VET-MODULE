@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseSaveException.cs" />
     <Compile Include="DoctorRepo.cs" />
     <Compile Include="IDoctorRepo.cs" />
     <Compile Include="Migrations\Configuration.cs" />

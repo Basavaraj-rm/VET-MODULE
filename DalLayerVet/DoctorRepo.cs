@@ -1,4 +1,5 @@
 ﻿using Entities;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -7,30 +8,32 @@ namespace DalLayerVet
     public class DoctorRepo:IDoctorRepo
     {
         private VetDbContext db = new VetDbContext();
-        public List<Feedback> getFeedbacks(int doctorId)
-        {
-            var data = db.Doctors.Find(doctorId);
-            if(data == null)
-            {
-                return null;
-            }
-            else
-            {
-                return data.feedbacks; 
-            }
-        }
 
         public Doctor SaveDoctor(Doctor doctor)
         {
-            db.Doctors.Add(doctor);
-            db.SaveChanges();
-            return doctor;
+            try
+            {
+                db.Doctors.Add(doctor);
+                db.SaveChanges();
+                return doctor;
+            }
+            catch(Exception e)
+            {
+                throw new DatabaseSaveException("Couldn't able to save doctor object into the database as doctor details are incomplete");
+            }
         }
 
         public async Task SaveDoctorAsync(Doctor doctor)
         {
-            db.Doctors.Add(doctor);
-            await db.SaveChangesAsync();
+            try
+            {
+                db.Doctors.Add(doctor);
+                await db.SaveChangesAsync();
+            }
+            catch(Exception e)
+            {
+                throw new DatabaseSaveException("Couldn't able to save doctor object into the database as doctor details are incomplete");
+            }
         }
 
     }
