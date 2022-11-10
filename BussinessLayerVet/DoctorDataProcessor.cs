@@ -16,45 +16,45 @@ namespace BussinessLayerVet
         {
             this.repo = repo;
         }
-    
-        public Feedback getFeedbacks(int doctorId,int appointmentId)
+
+        public Feedback getFeedbacks(int doctorId, int appointmentId)
         {
             try
             {
-                Feedback feedbacks = repo.getFeedbacks(doctorId,appointmentId);
+                Feedback feedbacks = repo.getFeedbacks(doctorId, appointmentId);
                 return feedbacks;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
-            
+
         }
-        public async Task<Feedback> getFeedbacksAsync(int doctorId,int appointmentId)
+        public async Task<Feedback> getFeedbacksAsync(int doctorId, int appointmentId)
         {
             try
             {
-                Feedback feedbacks = await repo.getFeedbacksAsync(doctorId,appointmentId);
+                Feedback feedbacks = await repo.getFeedbacksAsync(doctorId, appointmentId);
                 return feedbacks;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
-           
+
         }
-        public bool postFeedback(int doctorId,Feedback feedback)
+        public bool postFeedback(int doctorId, Feedback feedback)
         {
             try
             {
                 bool done = repo.postFeedback(doctorId, feedback);
                 return done;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
-           
+
         }
         public async Task<bool> postFeedbackAsync(int doctorId, Feedback feedback)
         {
@@ -63,11 +63,11 @@ namespace BussinessLayerVet
                 bool done = await repo.postFeedbackAsync(doctorId, feedback);
                 return done;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
-           
+
         }
         public bool AddAppointment(int doctorId, DoctorAppointment appointmentId)
         {
@@ -99,6 +99,9 @@ namespace BussinessLayerVet
         }
         public Doctor AddDoctor(DoctorDto dto)
         {
+            if (dto.name == null || dto.npiNo == 0 || dto.mobileNo == null || dto.speciality == null || dto.clinicAddress == null)
+                throw new Exception("Doctor details Incomplete. Name, NpiNo, MobileNo, Speciality and ClinicAddress are mandatory fields for the doctor");
+
             Doctor doctor = AutoMapper.MapperConfig(dto);
             doctor.feedbacks = new List<Feedback>();
             doctor.appointmentIds = new List<DoctorAppointment>();
@@ -109,6 +112,9 @@ namespace BussinessLayerVet
 
         public async Task<Doctor> AddDoctorAsync(DoctorDto dto)
         {
+            if (dto.name == null || dto.npiNo == 0 || dto.mobileNo == null || dto.speciality == null || dto.clinicAddress == null)
+                throw new Exception("Doctor details Incomplete. Name, NpiNo, MobileNo, Speciality and ClinicAddress are mandatory fields for the doctor");
+
             Doctor doctor = AutoMapper.MapperConfig(dto);
             doctor.feedbacks = new List<Feedback>();
             doctor.appointmentIds = new List<DoctorAppointment>();

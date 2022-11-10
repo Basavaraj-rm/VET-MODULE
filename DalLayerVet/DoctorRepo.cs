@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 
 namespace DalLayerVet
 {
-    public class DoctorRepo:IDoctorRepo
+    public class DoctorRepo : IDoctorRepo
     {
         VetDbContext db = new VetDbContext();
-        public Feedback getFeedbacks(int doctorId,int appointmentId)
+        public Feedback getFeedbacks(int doctorId, int appointmentId)
         {
             var data = db.Doctors.Find(doctorId);
-            if(data == null)
+            if (data == null)
             {
                 throw new DoctorNotFoundException("doctor id not present");
             }
@@ -41,10 +41,10 @@ namespace DalLayerVet
                 }
             }
         }
-        public async Task<Feedback> getFeedbacksAsync(int doctorId,int appointmentId)
+        public async Task<Feedback> getFeedbacksAsync(int doctorId, int appointmentId)
         {
-            
-            var data = await db.Doctors.FindAsync(doctorId); 
+
+            var data = await db.Doctors.FindAsync(doctorId);
             if (data == null)
             {
                 throw new DoctorNotFoundException("doctor id not present");
@@ -52,28 +52,29 @@ namespace DalLayerVet
             }
             else
             {
-                if ((from s in data.appointmentIds where s.appointmentId == appointmentId select s).ToList().Count == 0) 
-                { 
-                    throw new AppointmentIdNotFoundException("the given appointment id is not present"); 
+                if ((from s in data.appointmentIds where s.appointmentId == appointmentId select s).ToList().Count == 0)
+                {
+                    throw new AppointmentIdNotFoundException("the given appointment id is not present");
                 }
 
                 else
                 {
-                    List<Feedback> f = (from i in data.feedbacks where i.appointmentId == appointmentId select i).ToList(); 
-                    if (f.Count == 0) 
-                    { 
-                        throw new FeedbackNotPresentException("Feedback not present"); } 
-                    else 
-                    { 
-                        return f[0]; 
+                    List<Feedback> f = (from i in data.feedbacks where i.appointmentId == appointmentId select i).ToList();
+                    if (f.Count == 0)
+                    {
+                        throw new FeedbackNotPresentException("Feedback not present");
+                    }
+                    else
+                    {
+                        return f[0];
                     }
                 }
             }
         }
-        public bool postFeedback(int doctorId,Feedback feedback)
+        public bool postFeedback(int doctorId, Feedback feedback)
         {
             var data = db.Doctors.Find(doctorId);
-            if(data==null)
+            if (data == null)
             {
                 return false;
             }
