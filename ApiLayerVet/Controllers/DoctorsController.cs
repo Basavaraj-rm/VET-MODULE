@@ -27,33 +27,17 @@ namespace ApiLayerVet.Controllers
         [Route("api/Doctor/{doctorId}/Feedback/{appointmentId}")]
         public IHttpActionResult GET_FEEDBACK(int doctorId,int appointmentId)
         {
-           
+
             try
             {
-                List<Feedback> feedbacks = dataProcessor.getFeedbacks(doctorId);
-                if (feedbacks == null)
-                {
-                    return BadRequest("no feedback is found for this particular doctor id");
-                }
-                else
-                {
-                    List<Feedback> f = (from i in feedbacks where i.appointmentId == appointmentId select i).ToList();
-                    if(f.Count ==0)
-                    {
-                        return BadRequest("no feedback to this appointment");
-                    }
-                    else
-                    {
-                        return Ok(f[0]);
-                    }
-                   
-                }
+                Feedback feedback = dataProcessor.getFeedbacks(doctorId, appointmentId);
+                return Ok(feedback);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
-            
+
         }
         [HttpGet]
         [Route("api/Doctor/{doctorId}/Feedback/async/{appointmentId}")]
@@ -61,35 +45,20 @@ namespace ApiLayerVet.Controllers
         {
             try
             {
-                List<Feedback> feedbacks = await dataProcessor.getFeedbacksAsync(doctorId);
-                if (feedbacks == null)
-                {
-                    return BadRequest("no feedback is found for this particular doctor id");
-                }
-                else
-                {
-                    List<Feedback> f = (from i in feedbacks where i.appointmentId == appointmentId select i).ToList();
-                    if (f.Count == 0)
-                    {
-                        return BadRequest("no feedback to this appointment");
-                    }
-                    else
-                    {
-                        return Ok(f[0]);
-                    }
-                }
+                Feedback feedback = await dataProcessor.getFeedbacksAsync(doctorId, appointmentId);
+                return Ok(feedback);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
-            
+
         }
         [HttpPost]
         [Route("api/Doctor/Feedback/{doctorId}")]
         public IHttpActionResult POST_FEEDBACK([FromUri()] int doctorId, [FromBody()] Feedback feedback)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 try
                 {
@@ -103,11 +72,11 @@ namespace ApiLayerVet.Controllers
                         return Created($"api/Doctor/Feedback/{doctorId}", feedback);
                     }
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     return BadRequest(e.Message);
                 }
-                
+
             }
             else
             {
@@ -132,7 +101,7 @@ namespace ApiLayerVet.Controllers
                         return Created($"api/Doctor/Feedback/{doctorId}", feedback);
                     }
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     return BadRequest(e.Message);
                 }

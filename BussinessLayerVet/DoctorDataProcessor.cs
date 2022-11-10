@@ -17,11 +17,11 @@ namespace BussinessLayerVet
             this.repo = repo;
         }
     
-        public List<Feedback> getFeedbacks(int doctorId)
+        public Feedback getFeedbacks(int doctorId,int appointmentId)
         {
             try
             {
-                List<Feedback> feedbacks = repo.getFeedbacks(doctorId);
+                Feedback feedbacks = repo.getFeedbacks(doctorId,appointmentId);
                 return feedbacks;
             }
             catch(Exception e)
@@ -30,11 +30,11 @@ namespace BussinessLayerVet
             }
             
         }
-        public async Task<List<Feedback>> getFeedbacksAsync(int doctorId)
+        public async Task<Feedback> getFeedbacksAsync(int doctorId,int appointmentId)
         {
             try
             {
-                List<Feedback> feedbacks = await repo.getFeedbacksAsync(doctorId);
+                Feedback feedbacks = await repo.getFeedbacksAsync(doctorId,appointmentId);
                 return feedbacks;
             }
             catch(Exception e)

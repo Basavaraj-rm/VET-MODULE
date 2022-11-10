@@ -14,7 +14,7 @@ namespace DalLayerVet
     public class DoctorRepo:IDoctorRepo
     {
         VetDbContext db = new VetDbContext();
-        public List<Feedback> getFeedbacks(int doctorId)
+        public Feedback getFeedbacks(int doctorId,int appointmentId)
         {
             var data = db.Doctors.Find(doctorId);
             if(data == null)
@@ -23,19 +23,51 @@ namespace DalLayerVet
             }
             else
             {
-                return data.feedbacks; 
+                if ((from s in data.appointmentIds where s.appointmentId == appointmentId select s).ToList().Count == 0)
+                {
+                    throw new AppointmentIdNotFoundException("the given appointment id is not present");
+                }
+                else
+                {
+                    List<Feedback> f = (from i in data.feedbacks where i.appointmentId == appointmentId select i).ToList();
+                    if (f.Count == 0)
+                    {
+                        throw new FeedbackNotPresentException("Feedback not present");
+                    }
+                    else
+                    {
+                        return f[0];
+                    }
+                }
             }
         }
-        public async Task<List<Feedback>> getFeedbacksAsync(int doctorId)
+        public async Task<Feedback> getFeedbacksAsync(int doctorId,int appointmentId)
         {
-            var data = await db.Doctors.FindAsync(doctorId);
+            
+            var data = await db.Doctors.FindAsync(doctorId); 
             if (data == null)
             {
                 throw new DoctorNotFoundException("doctor id not present");
+
             }
             else
             {
-                return data.feedbacks;
+                if ((from s in data.appointmentIds where s.appointmentId == appointmentId select s).ToList().Count == 0) 
+                { 
+                    throw new AppointmentIdNotFoundException("the given appointment id is not present"); 
+                }
+
+                else
+                {
+                    List<Feedback> f = (from i in data.feedbacks where i.appointmentId == appointmentId select i).ToList(); 
+                    if (f.Count == 0) 
+                    { 
+                        throw new FeedbackNotPresentException("Feedback not present"); } 
+                    else 
+                    { 
+                        return f[0]; 
+                    }
+                }
             }
         }
         public bool postFeedback(int doctorId,Feedback feedback)
@@ -47,18 +79,25 @@ namespace DalLayerVet
             }
             else
             {
-                
-                if((from f in data.feedbacks where f.appointmentId==feedback.appointmentId select f).ToList().Count==0)
+
+                if (((from a in data.appointmentIds where a.appointmentIdByAppointmentModule == feedback.appointmentId select a).ToList()).Count == 0)
                 {
-                   data.feedbacks.Add(feedback);
-                    db.SaveChanges();
-                    return true;
+                    throw new AppointmentIdNotFoundException("given appointment id not present in our database");
                 }
                 else
                 {
-                    throw new FeedbackExitsException("feedback exits in our database");
+                    if ((from f in data.feedbacks where f.appointmentId == feedback.appointmentId select f).ToList().Count == 0)
+                    {
+                        data.feedbacks.Add(feedback);
+                        db.SaveChanges();
+                        return true;
+                    }
+                    else
+                    {
+                        throw new FeedbackExitsException("feedback exits in our database");
+                    }
                 }
-               
+
             }
         }
         public async Task<bool> postFeedbackAsync(int doctorId, Feedback feedback)
@@ -70,18 +109,25 @@ namespace DalLayerVet
             }
             else
             {
-              
-                if ((from f in data.feedbacks where f.appointmentId == feedback.appointmentId select f).ToList().Count == 0)
+
+                if ((from s in data.appointmentIds where s.appointmentIdByAppointmentModule == feedback.appointmentId select s).ToList().Count == 0)
                 {
-                    data.feedbacks.Add(feedback);
-                    await db.SaveChangesAsync();
-                    return true;
+                    throw new AppointmentIdNotFoundException("given appointment id not present in our database");
                 }
                 else
                 {
-                    throw new FeedbackExitsException("feedback exits in our database");
+                    if ((from f in data.feedbacks where f.appointmentId == feedback.appointmentId select f).ToList().Count == 0)
+                    {
+                        data.feedbacks.Add(feedback);
+                        await db.SaveChangesAsync();
+                        return true;
+                    }
+                    else
+                    {
+                        throw new FeedbackExitsException("feedback exits in our database");
+                    }
                 }
-                
+
             }
         }
         public bool AddAppointment(int doctorId, DoctorAppointment appointmentId)

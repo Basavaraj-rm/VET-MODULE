@@ -9,8 +9,8 @@ namespace DalLayerVet
 {
     public interface IDoctorRepo
     {
-        List<Feedback> getFeedbacks(int doctorId);
-        Task<List<Feedback>> getFeedbacksAsync(int doctorId);
+        Feedback getFeedbacks(int doctorId,int appointmentId);
+        Task<Feedback> getFeedbacksAsync(int doctorId,int appointmentId);
         bool postFeedback(int doctorId, Feedback feedback);
         Task<bool> postFeedbackAsync(int doctorId, Feedback feedback);
         bool AddAppointment(int doctorId, DoctorAppointment appointmentId);

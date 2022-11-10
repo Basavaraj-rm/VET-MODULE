@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppointmentIdNotFoundException.cs" />
     <Compile Include="DoctorNotFoundException.cs" />
     <Compile Include="FeedbackExitsException.cs" />
+    <Compile Include="FeedbackNotPresentException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
