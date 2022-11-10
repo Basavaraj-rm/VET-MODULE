@@ -19,7 +19,7 @@ namespace DalLayerVet
             }
             catch(Exception e)
             {
-                throw new DatabaseSaveException("Couldn't able to save doctor object into the database as doctor details are incomplete");
+                throw new Exception("Exception thrown while saving doctor into the database");
             }
         }
 
@@ -32,7 +32,7 @@ namespace DalLayerVet
             }
             catch(Exception e)
             {
-                throw new DatabaseSaveException("Couldn't able to save doctor object into the database as doctor details are incomplete");
+                throw new Exception("Exception thrown while saving doctor into the database");
             }
         }
 

@@ -107,7 +107,7 @@
   <ItemGroup>
     <Compile Include="AutoMapper.cs" />
     <Compile Include="DoctorDataProcessor.cs" />
-    <Compile Include="DoctorDetailsNotCompleteException.cs" />
+    <Compile Include="DoctorDetailsInCompleteException.cs" />
     <Compile Include="IDoctorDataProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

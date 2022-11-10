@@ -21,6 +21,9 @@ namespace BussinessLayerVet
         {
             try
             {
+                if (dto.name == null ||  dto.npiNo == 0 || dto.mobileNo == null || dto.speciality == null || dto.clinicAddress == null) 
+                    throw new DoctorDetailsInCompleteException("Doctor details Incomplete. Name, NpiNo, MobileNo, Speciality and ClinicAddress are mandatory fields for the doctor");
+
                 Doctor doctor = AutoMapper.MapperConfig(dto);
                 doctor.feedbacks = new List<Feedback>();
                 doctor.appointmentIds = new List<DoctorAppointment>();
@@ -28,9 +31,13 @@ namespace BussinessLayerVet
                 Doctor savedDoctor = repo.SaveDoctor(doctor);
                 return savedDoctor;
             }
-            catch (DatabaseSaveException e)
+            catch(DoctorDetailsInCompleteException e)
             {
-                throw new DatabaseSaveException(e.Message);
+                throw e;
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
 
         }
@@ -39,6 +46,9 @@ namespace BussinessLayerVet
         {
             try
             {
+                if (dto.name == null || dto.npiNo == 0 || dto.mobileNo == null || dto.speciality == null || dto.clinicAddress == null)
+                    throw new DoctorDetailsInCompleteException("Doctor details Incomplete. Name, NpiNo, MobileNo, Speciality and ClinicAddress are mandatory fields for the doctor");
+
                 Doctor doctor = AutoMapper.MapperConfig(dto);
                 doctor.feedbacks = new List<Feedback>();
                 doctor.appointmentIds = new List<DoctorAppointment>();
@@ -46,9 +56,13 @@ namespace BussinessLayerVet
                 await repo.SaveDoctorAsync(doctor);
                 return doctor;
             }
-            catch (DatabaseSaveException e)
+            catch (DoctorDetailsInCompleteException e)
             {
-                throw new DatabaseSaveException(e.Message);
+                throw e;
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 
